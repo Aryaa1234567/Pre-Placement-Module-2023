@@ -8,7 +8,7 @@
 
 ## Coding Profiles
 - LeetCode: [Aryaa](https://leetcode.com/Aryaa/)
-- HackerRank: [ARYAA_KIET](https://www.hackerrank.com/aryaa_1923ec1199)
+- HackerRank: [ARYAA KIET](https://www.hackerrank.com/aryaa_1923ec1199)
 
 ## Placement Module
 1. [DS I](https://github.com/Aryaa1234567/Pre-Placement-Module-2023/tree/main/DS%20I)
