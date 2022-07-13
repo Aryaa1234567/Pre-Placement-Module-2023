@@ -1,0 +1,57 @@
+class ListNode:
+
+    def __init__(self, val=0, next=None):
+
+        self.val = val
+
+        self.next = next
+
+class Solution:
+
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+
+        """Remove the nth from the last node.
+
+        Args:
+
+            head (Optional[ListNode]): Head of list
+
+            n (int): Node to remove
+
+        Returns:
+
+            Optional[ListNode]: Modified list
+
+        """
+
+        length = 0
+
+        current = head
+
+        nodes = {}
+
+        while current:
+
+            nodes[length] = current
+
+            current = current.next
+
+            length += 1
+
+        node_to_remove = length - n
+
+        current = nodes[max(node_to_remove - 1, 0)]
+
+        if current == head and node_to_remove == 0:
+
+            head = current.next
+
+        elif current.next:
+
+            current.next = current.next.next
+
+        else:
+
+            current.next = None
+
+        return head
