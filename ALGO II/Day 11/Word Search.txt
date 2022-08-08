@@ -1,0 +1,47 @@
+class Solution(object):
+    def exist(self, board, word):
+        """
+        :type board: List[List[str]]
+        :type word: str
+        :rtype: bool
+        """ 
+
+        for i in range(len(board)):
+
+            for j in range(len(board[0])):
+
+                if board[i][j] == word[0]:
+
+                    ch, board[i][j] = board[i][j], -1
+
+                    if self.backtrack(ch, 1, word, board, i, j):
+
+                        return True
+
+                    board[i][j] = ch
+
+        return False
+
+    
+
+    def backtrack(self, ch, k, word, board, x, y):
+
+        if k == len(word):
+
+            return True
+
+        else:
+
+            for x1,y1 in ((x+1,y), (x-1,y), (x, y+1), (x, y-1)):
+
+                if 0<=x1<len(board) and 0<=y1<len(board[0]) and board[x1][y1] == word[k]:
+
+                    ch, board[x1][y1] = board[x1][y1], -1
+
+                    if self.backtrack(ch, k+1, word, board, x1, y1):
+
+                        return True
+
+                    board[x1][y1] = ch
+
+            return False       
