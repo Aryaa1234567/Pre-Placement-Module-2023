@@ -1,0 +1,57 @@
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.           """
+ 
+        point_set = set()
+
+        
+
+        def outside_border(i, j):
+
+            if (i == 0 or i == len(board) - 1) or (j == 0 or j == len(board[i]) - 1):
+
+                return True
+
+            return False
+
+        
+
+        def dfs(i, j):
+
+            point_set.add((i, j))
+
+            directions = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+
+            for direction in directions: 
+
+                new_x = i + direction[0]
+
+                new_y = j + direction[1]
+
+                if (0 <= new_x < len(board) and 0 <= new_y < len(board[i]) and board[new_x][new_y] == 'O' 
+
+                and (new_x, new_y) not in point_set):
+
+                    dfs(new_x, new_y)
+
+                    
+
+        for i in range(len(board)):
+
+            for j in range(len(board[i])):
+
+                if board[i][j] == 'O' and outside_border(i, j):
+
+                    dfs(i, j)
+
+        
+
+        for i in range(len(board)):
+
+            for j in range(len(board[i])):
+
+                if board[i][j] == 'O' and (i , j) not in point_set: 
+
+                    board[i][j] = 'X'      
+        
